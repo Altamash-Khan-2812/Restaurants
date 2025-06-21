@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Arfat",
+    "address": "Mira road",
+    "cuisine": "Indian",
+    "website": "https://www.google.com",
+    "description": "bla bla bla"
+  },
+  {
+    "name": "Shahi",
+    "address": "Shanti nagar",
+    "cuisine": "Indian, chinese",
+    "website": "https://www.algoexpert.io",
+    "description": "it open for  24/7"
+  }
+]
