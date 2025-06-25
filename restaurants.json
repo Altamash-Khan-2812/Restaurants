@@ -1,16 +1,23 @@
 [
   {
     "name": "Arfat",
-    "address": "Mira road",
-    "cuisine": "Indian",
-    "website": "https://www.google.com",
-    "description": "bla bla bla"
+    "address": "B-001, gulistan no.6",
+    "cuisine": "Italian",
+    "website": "https://www.arfat.com",
+    "description": "aa bb cc dd ee ff"
   },
   {
-    "name": "Shahi",
-    "address": "Shanti nagar",
-    "cuisine": "Indian, chinese",
+    "name": "Ayan",
+    "address": "xyz street, mira road",
+    "cuisine": "xyz",
     "website": "https://www.algoexpert.io",
-    "description": "it open for  24/7"
+    "description": "xyz reasons"
+  },
+  {
+    "name": "Ayan",
+    "address": "B-001, gulistan no.6",
+    "cuisine": "I",
+    "website": "https://www.youtube.com",
+    "description": "wsdbgtn"
   }
 ]
