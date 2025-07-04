@@ -23,6 +23,10 @@ app.get("/restaurants", function (req, res) {
   });
 });
 
+app.get('/restaurants/:id', function(req, res){
+  
+})
+
 app.get("/recommend", function (req, res) {
   res.render("recommend");
 });
