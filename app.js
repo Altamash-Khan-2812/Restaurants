@@ -18,23 +18,24 @@ app.get("/", function (req, res) {
 
 app.get("/restaurants", function (req, res) {
   const filePath = path.join(__dirname, "restaurants.json");
-  const restaurantsList = JSON.parse(fs.readFileSync(filePath));
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
   res.render("restaurants", {
-    numberOfRestaurants: restaurantsList.length,
-    restaurants: restaurantsList,
+    numberOfRestaurants: storedRestaurants.length,
+    restaurants: storedRestaurants,
   });
 });
 
 app.get("/restaurants/:id", function (req, res) {
   const restaurantId = req.params.id;
-  const restaurnatFilePath = path.join(__dirname, "restaurants.json");
-  const fileData = fs.readFileSync(restaurnatFilePath);
-  const restaurants = JSON.parse(fileData);
-  const selectedRestaurant = restaurants.find((r) => r.id === restaurantId);
+  const filePath = path.join(__dirname, "restaurants.json");
+  const fileData = fs.readFileSync(filePath);
+  const storedRestaurants = JSON.parse(fileData);
+  const selectedRestaurant = storedRestaurants.find((r) => r.id === restaurantId);
   if (selectedRestaurant) {
     return res.render("restaurant-detail", { restaurant: selectedRestaurant });
   }
-  res.render("404");
+  res.status(404).render("404");
 });
 
 app.get("/recommend", function (req, res) {
@@ -46,9 +47,9 @@ app.post("/recommend", function (req, res) {
   restaurant.id = uuid.v4();
   const filePath = path.join(__dirname, "restaurants.json");
   const fileData = fs.readFileSync(filePath);
-  const restaurantsList = JSON.parse(fileData);
-  restaurantsList.push(restaurant);
-  fs.writeFileSync(filePath, JSON.stringify(restaurantsList));
+  const storedRestaurants = JSON.parse(fileData);
+  storedRestaurants.push(restaurant);
+  fs.writeFileSync(filePath, JSON.stringify(storedRestaurants));
 
   res.redirect("/confirm");
 });
@@ -62,11 +63,11 @@ app.get("/confirm", function (req, res) {
 });
 
 app.use(function (req, res) {
-  res.render("404");
+  res.status(404).render("404");
 });
 
 app.use(function (error, req, res, next) {
-  res.render("500");
+  res.status(500).render("500");
 });
 
 app.listen(3000);
