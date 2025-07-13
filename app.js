@@ -3,6 +3,10 @@ const fs = require("fs");
 
 const express = require("express");
 const uuid = require("uuid");
+const {
+  getStoredRestaurants,
+  updatedRestaurantsList,
+} = require("./util/stored-restaurants");
 
 const app = express();
 
@@ -17,9 +21,10 @@ app.get("/", function (req, res) {
 });
 
 app.get("/restaurants", function (req, res) {
-  const filePath = path.join(__dirname, "restaurants.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
+  // const filePath = path.join(__dirname, "restaurants.json");
+  // const fileData = fs.readFileSync(filePath);
+  // const storedRestaurants = JSON.parse(fileData);
+  const storedRestaurants = getStoredRestaurants();
   res.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
     restaurants: storedRestaurants,
@@ -28,10 +33,11 @@ app.get("/restaurants", function (req, res) {
 
 app.get("/restaurants/:id", function (req, res) {
   const restaurantId = req.params.id;
-  const filePath = path.join(__dirname, "restaurants.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
-  const selectedRestaurant = storedRestaurants.find((r) => r.id === restaurantId);
+  const storedRestaurants = getStoredRestaurants();
+
+  const selectedRestaurant = storedRestaurants.find(
+    (r) => r.id === restaurantId
+  );
   if (selectedRestaurant) {
     return res.render("restaurant-detail", { restaurant: selectedRestaurant });
   }
@@ -45,11 +51,11 @@ app.get("/recommend", function (req, res) {
 app.post("/recommend", function (req, res) {
   const restaurant = req.body;
   restaurant.id = uuid.v4();
-  const filePath = path.join(__dirname, "restaurants.json");
-  const fileData = fs.readFileSync(filePath);
-  const storedRestaurants = JSON.parse(fileData);
-  storedRestaurants.push(restaurant);
-  fs.writeFileSync(filePath, JSON.stringify(storedRestaurants));
+  const restaurants = getStoredRestaurants();
+
+  restaurants.push(restaurant);
+
+  updatedRestaurantsList(restaurants);
 
   res.redirect("/confirm");
 });
