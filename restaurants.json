@@ -1,34 +1,26 @@
 [
   {
-    "name": "Arfat",
-    "address": "B-001, gulistan no.6",
-    "cuisine": "Italian",
-    "website": "https://www.arfat.com",
-    "description": "aa bb cc dd ee ff",
-    "id": "r1"
-  },
-  {
-    "name": "Ayan",
-    "address": "xyz street, mira road",
-    "cuisine": "xyz",
-    "website": "https://www.algoexpert.io",
-    "description": "xyz reasons",
-    "id": "r2"
-  },
-  {
-    "name": "Ayan",
-    "address": "B-001, gulistan no.6",
-    "cuisine": "I",
+    "name": "bbb",
+    "address": "bbb",
+    "cuisine": "bbb",
     "website": "https://www.youtube.com",
-    "description": "wsdbgtn",
-    "id": "r3"
+    "description": "bbb reasons",
+    "id": "c6577328-2d08-4418-b39c-7f963ac4539e"
   },
   {
-    "name": "xyz",
-    "address": "xyz",
-    "cuisine": "xyz",
+    "name": "aaa",
+    "address": "aaa",
+    "cuisine": "aaa",
     "website": "https://www.google.com",
-    "description": "xyz reasons",
-    "id": "b90f1975-f9a1-47e7-bcad-a6cc9aebbad6"
+    "description": "aaa reasons",
+    "id": "793f52f3-aa10-43bb-85ef-71f9a8f65eb1"
+  },
+  {
+    "name": "ayan",
+    "address": "ayan",
+    "cuisine": "indian",
+    "website": "https://www.algoexpert.io",
+    "description": "ayans reasons",
+    "id": "f679c623-8b01-4ae5-afb6-22d66a2b8630"
   }
 ]

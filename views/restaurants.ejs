@@ -17,6 +17,16 @@
       <% } else { %>
       <p>Find your next favorite restaurants with help of our other users!</p>
       <p>We found <%= numberOfRestaurants %> restaurants.</p>
+      <form action="/restaurants" method="GET">
+        <!-- <input type="hidden" value="" name="order" />
+        <button class="btn">Change Order</button> -->
+
+        <select name="order" onchange="this.form.submit()">
+          <option value="default" <%= order === "default" ? "selected" : "" %>>Default</option>
+          <option value="asc" <%= order === "asc" ? "selected" : "" %>>Ascending</option>
+          <option value="desc" <%= order === "desc" ? "selected" : "" %>>Descending</option>
+        </select>
+      </form>
       <ul id="restaurants-list">
         <% for (const restaurant of restaurants) { %>
         <li class="restaurant-item">

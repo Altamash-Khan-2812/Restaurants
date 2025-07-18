@@ -8,10 +8,52 @@ const {
 } = require("../util/stored-restaurants");
 
 router.get("/restaurants", function (req, res) {
-  const storedRestaurants = getStoredRestaurants();
+  let storedRestaurants = getStoredRestaurants();
+  // Solution 1
+  // let order = req.query.order;
+  // let nextOrder = "desc";
+
+  // if (order !== "asc" && order !== "desc") {
+  //   console.log("if entered");
+  //   nextOrder = "asc";
+  // }
+
+  // if (order === "desc") {
+  //   nextOrder = "asc";
+  // }
+
+  // storedRestaurants.sort((resA, resB) => {
+  //   if (order === "asc" && resA.name > resB.name) {
+  //     return 1;
+  //   } else if (order === "desc" && resA.name < resB.name) {
+  //     return 1;
+  //   }
+  //   return -1;
+  // });
+
+  // storedRestaurants.sort((resA, resB) => {
+  //   if (resA.name > resB.name) {
+  //     return 1;
+  //   }
+  //   return -1;
+  // });
+
+  const order = req.query.order;
+  if (order !== "default") {
+    storedRestaurants.sort((resA, resB) => {
+      if (resA.name > resB.name) {
+        return 1;
+      }
+      return -1;
+    });
+    storedRestaurants =
+      order === "asc" ? storedRestaurants : storedRestaurants.reverse();
+  }
   res.render("restaurants", {
     numberOfRestaurants: storedRestaurants.length,
     restaurants: storedRestaurants,
+    order: order || "default",
+    // nextOrder: nextOrder,
   });
 });
 
